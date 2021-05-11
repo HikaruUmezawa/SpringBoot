@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirm</title>
+</head>
+<body>
+<h1>内容確認</h1>
+  <p th:text="'名前: '+ ${contactForm.name}"></p>
+  <p th:text="'メールアドレス: '+ ${contactForm.mail}"></p>
+  <p th:text="'お問い合わせ内容: '+ ${contactForm.content}"></p>
+<form action="#" method="post" th:action="@{/contact/save}">
+  <input type="hidden" name="name" th:value="${contactForm.name}">
+  <input type="hidden" name="mail" th:value="${contactForm.mail}">
+  <input type="hidden" name="content" th:value="${contactForm.content}">
+  <input type="submit" value="送信">
+</form>
+</body>
+</html>
