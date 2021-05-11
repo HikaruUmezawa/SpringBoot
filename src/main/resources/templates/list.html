@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<h1>お問い合わせ一覧</h1>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>名前</th>
+    <th>メールアドレス</th>
+    <th>問い合わせ内容</th>
+    <th>日時</th>
+  </tr>
+  <tr th:each="contact:${contacts}">
+    <td th:text="${contact.id}"></td>
+    <td th:text="${contact.name}"></td>
+    <td th:text="${contact.mail}"></td>
+    <td th:text="${contact.content}"></td>
+    <td th:text="${contact.created}"></td>
+  </tr>
+</table>
+<p><a href="/">トップ</a></p>
+</body>
+</html>
