@@ -4,7 +4,9 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-public class Contact {
+public class
+
+Contact {
     private int id;
     private String name;
     private String mail;
