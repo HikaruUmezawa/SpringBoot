@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Hello</title>
-    <meta charset="utf-8" />
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header('Top')">
 </head>
 <body>
-<p>
-    <span th:text="${message}"></span>
-</p>
-<p><a href="/contact">お問い合わせ</a></p>
-<p><a href="/contact/list">お問い合わせ一覧</a></p>
+<div id="wrapper">
+
+    <div th:replace="common :: header"></div>
+
+    <div class="text-center bg-image top"
+         style="background-image: url('https://publicdomainq.net/images/202002/01s/publicdomainq-0042433phb.jpg');">
+        <div class="mask">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3" th:text="${message}"></h1>
+                    <a class="btn btn-outline-light btn-lg" href="/contact" role="button">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="common :: footer"></div>
+</div>
 </body>
 </html>

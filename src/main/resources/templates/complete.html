@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Complete</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header('Complete')">
 </head>
 <body>
-  <h1>登録完了しました。</h1>
-  <p><a href="/contact/list">お問い合わせ一覧</a></p>
-  <p><a href="/">トップ</a></p>
+<div id="wrapper">
+
+    <div th:replace="common :: header"></div>
+
+    <div class="container mt-5 p-3">
+        <h2 class="text-center mb-3">お問い合わせありがとうございます。</h2>
+        <h2 class="text-center mb-3">3営業日以内にご連絡いたします。</h2>
+        <div class="text-center mt-5">
+            <a class="btn btn-outline-primary btn-md" href="/" role="button">トップへ</a>
+        </div>
+    </div>
+
+    <div th:replace="common :: footer"></div>
+</div>
 </body>
 </html>

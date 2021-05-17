@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -45,11 +46,21 @@ public class ContactController {
         return "complete";
     }
 
+    //問い合わせ一覧
     @GetMapping("/contact/list")
     public  String contactList(Model model){
         model.addAttribute("contacts", service.getAll());
 
         return "list";
     }
+
+    //問い合わせ詳細
+    @GetMapping("/contact/detail/{id}")
+    public String contactDetail(@PathVariable("id") int id, Model model){
+        model.addAttribute("contact",service.findById(id));
+
+        return "detail";
+    }
+
 
 }

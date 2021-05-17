@@ -28,4 +28,9 @@ public class ContactServiceImpl implements ContactService {
       return dao.getAll();
     }
 
+    @Override
+    public  Contact findById(int id){
+        return dao.findById(id);
+    }
+
 }

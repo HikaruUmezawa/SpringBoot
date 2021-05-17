@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="${status} + ' ' + ${error}"></title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header('Error')">
 </head>
 <body>
-<h1>エラーです。</h1>
-<p th:text="'status : ' + ${status}"></p>
-<p th:text="'error : ' + ${error}"></p>
-<a href="/">トップへ戻る</a>
+<div id="wrapper">
+
+    <div th:replace="common :: header"></div>
+
+    <div class="container mt-5 p-3">
+        <h2>エラーです。</h2>
+        <h4 th:text="'status : ' + ${status}"></h4>
+        <h4 th:text="'error : ' + ${error}"></h4>
+        <div class="text-center mt-5">
+            <a class="btn btn-outline-primary btn-md" href="/" role="button">トップへ</a>
+        </div>
+
+    </div>
+    <div th:replace="common :: footer"></div>
+</div>
 </body>
 </html>
