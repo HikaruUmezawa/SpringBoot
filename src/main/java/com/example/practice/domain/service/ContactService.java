@@ -10,4 +10,6 @@ public interface ContactService {
     void save(Contact contact);
 
     List<Contact> getAll();
+
+    Contact findById(int id);
 }

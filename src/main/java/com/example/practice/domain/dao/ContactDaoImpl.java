@@ -47,4 +47,17 @@ public class ContactDaoImpl implements ContactDao {
         }
         return  contactList;
     }
+
+    @Override
+    //idごとに取得する
+    public Contact findById(int id) {
+        Map<String,Object> map = jdbcTemplate.queryForMap("SELECT * FROM contact WHERE id = ?",id);
+        Contact contact = new Contact();
+        contact.setId(Math.toIntExact((long) map.get("id")));
+        contact.setName((String) map.get("name"));
+        contact.setMail((String) map.get("mail"));
+        contact.setContent((String) map.get("content"));
+        contact.setCreated((Timestamp) map.get("created"));
+        return contact;
+    }
 }

@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Confirm</title>
+<head th:replace="common :: meta_header('Confirm')">
 </head>
 <body>
-<h1>内容確認</h1>
-  <p th:text="'名前: '+ ${contactForm.name}"></p>
-  <p th:text="'メールアドレス: '+ ${contactForm.mail}"></p>
-  <p th:text="'お問い合わせ内容: '+ ${contactForm.content}"></p>
-<form action="#" method="post" th:action="@{/contact/save}">
-  <input type="hidden" name="name" th:value="${contactForm.name}">
-  <input type="hidden" name="mail" th:value="${contactForm.mail}">
-  <input type="hidden" name="content" th:value="${contactForm.content}">
-  <input type="submit" value="送信">
-</form>
+<div id="wrapper">
+
+    <div th:replace="common :: header"></div>
+
+    <div class="container mt-5 p-3">
+        <h2 class="text-center mt-3">内容確認</h2>
+        <div class="confirm">
+            <p th:text="'名前: '+ ${contactForm.name}"></p>
+            <p th:text="'メールアドレス: '+ ${contactForm.mail}"></p>
+            <p th:text="'お問い合わせ内容: '+ ${contactForm.content}"></p>
+            <p class="text-center">こちらの内容でよろしいでしょうか？</p>
+            <div class="form-group">
+                <form action="#" method="post" th:action="@{/contact/save}">
+                    <input type="hidden" name="name" th:value="${contactForm.name}">
+                    <input type="hidden" name="mail" th:value="${contactForm.mail}">
+                    <input type="hidden" name="content" th:value="${contactForm.content}">
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <input class="btn btn-success" style="width: 80%" type="submit" value="編集">
+                        </div>
+                        <div class="col-6 text-center">
+                            <input class="btn btn-primary btn" style="width: 80%" type="submit" value="送信">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="common :: footer"></div>
+</div>
 </body>
 </html>

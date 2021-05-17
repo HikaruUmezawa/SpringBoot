@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header('Detail')">
+</head>
+<body>
+<div id="wrapper">
+
+    <div th:replace="common :: header"></div>
+
+    <div class="container mt-5 p-3">
+        <h2 class="text-center mt-3">お問い合わせ詳細</h2>
+        <p th:text="'ID: '+ ${contact.id}"></p>
+        <p th:text="'名前: '+ ${contact.name}"></p>
+        <p th:text="'メールアドレス: '+ ${contact.mail}"></p>
+        <p>お問い合わせ内容:</p>
+        <p th:text="${contact.content}"></p>
+        <div class="text-center mt-5">
+            <a class="btn btn-outline-primary btn-md" href="/contact/list" role="button">お問い合わせ一覧へ</a>
+        </div>
+    </div>
+
+    <div th:replace="common :: footer"></div>
+</div>
+</body>
+</html>
