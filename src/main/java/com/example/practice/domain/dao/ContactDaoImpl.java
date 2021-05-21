@@ -32,7 +32,8 @@ public class ContactDaoImpl implements ContactDao {
     //全取得する
     public List<Contact> getAll(){
         //DBからid順に取得
-        List<Map<String, Object>> contacts = jdbcTemplate.queryForList("SELECT * FROM contact ORDER BY id");
+        List<Map<String, Object>> contacts = jdbcTemplate
+                .queryForList("SELECT * FROM contact ORDER BY id");
         //Listをつくる
         List<Contact> contactList = new ArrayList<>();
         //受け取ったMapのListをContactオブジェクトに格納

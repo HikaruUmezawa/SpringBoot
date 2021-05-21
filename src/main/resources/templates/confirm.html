@@ -8,26 +8,42 @@
     <div th:replace="common :: header"></div>
 
     <div class="container mt-5 p-3">
-        <h2 class="text-center mt-3">内容確認</h2>
-        <div class="confirm">
-            <p th:text="'名前: '+ ${contactForm.name}"></p>
-            <p th:text="'メールアドレス: '+ ${contactForm.mail}"></p>
-            <p th:text="'お問い合わせ内容: '+ ${contactForm.content}"></p>
-            <p class="text-center">こちらの内容でよろしいでしょうか？</p>
-            <div class="form-group">
-                <form action="#" method="post" th:action="@{/contact/save}">
-                    <input type="hidden" name="name" th:value="${contactForm.name}">
-                    <input type="hidden" name="mail" th:value="${contactForm.mail}">
-                    <input type="hidden" name="content" th:value="${contactForm.content}">
-                    <div class="row">
-                        <div class="col-6 text-center">
-                            <input class="btn btn-success" style="width: 80%" type="submit" value="編集">
-                        </div>
-                        <div class="col-6 text-center">
-                            <input class="btn btn-primary btn" style="width: 80%" type="submit" value="送信">
-                        </div>
+        <h2 class="text-center">内容確認</h2>
+        <div class="confirm text-center mt-5">
+            <p>こちらの内容でよろしいでしょうか？</p>
+            <table class="table table-bordered mt-3"  th:object="${contactForm}">
+                <tr>
+                    <th scope="row">名前</th>
+                    <td th:text="*{name}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">メールアドレス</th>
+                    <td th:text="*{mail}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">問い合わせ内容</th>
+                    <td th:text="*{content}"></td>
+                </tr>
+            </table>
+            <div class="form-group mt-5">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <form action="#" method="post" th:action="@{/contact}">
+                            <input type="hidden" name="name" th:value="${contactForm.name}">
+                            <input type="hidden" name="mail" th:value="${contactForm.mail}">
+                            <input type="hidden" name="content" th:value="${contactForm.content}">
+                            <input class="btn btn-success" style="width: 80%" type="submit" value="戻る">
+                        </form>
                     </div>
-                </form>
+                    <div class="col-6 text-center">
+                        <form action="#" method="post" th:action="@{/contact/save}">
+                            <input type="hidden" name="name" th:value="${contactForm.name}">
+                            <input type="hidden" name="mail" th:value="${contactForm.mail}">
+                            <input type="hidden" name="content" th:value="${contactForm.content}">
+                            <input class="btn btn-primary btn" style="width: 80%" type="submit" value="送信">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

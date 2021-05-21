@@ -19,13 +19,15 @@ public class ContactController {
     @Autowired
     private ContactService service;
 
+    //お問い合わせページ
     @GetMapping("/contact")
     public String contactForm(Model model) {
         model.addAttribute("contactForm", new ContactForm());
         return "contact";
     }
 
-    @PostMapping("/contact")
+    //問い合わせ送信、確認画面へ
+    @PostMapping("/confirm")
     //バリデーション済みの値を取得
     public String contactSubmit(@Validated ContactForm contactForm, BindingResult result) {
         if (result.hasErrors()){
@@ -35,6 +37,14 @@ public class ContactController {
         return "confirm";
     }
 
+    //確認画面で戻るボタンが押されたとき
+    @PostMapping("/contact")
+    public String contactBack(ContactForm contactForm){
+        return "contact";
+    }
+
+
+    //問い合わせ保存処理
     @PostMapping("/contact/save")
     public String contactSave(ContactForm contactForm){
         Contact contact = new Contact();
