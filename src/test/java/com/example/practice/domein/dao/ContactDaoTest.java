@@ -41,6 +41,7 @@ public class ContactDaoTest {
     @Test
     @DatabaseSetup(value = "/testData/") //初期状態のDB
     @ExpectedDatabase(value = "/expectedData/", assertionMode = DatabaseAssertionMode.NON_STRICT) //期待されるDB
+    //createメソッドのテスト
     public void testCreate() throws Exception {
         //保存するデータ準備
         Contact contact = new Contact();
@@ -51,6 +52,7 @@ public class ContactDaoTest {
         contactDao.create(contact);
     }
 
+    //getAllメソッドのテスト
     @Test
     @DatabaseSetup(value = "/testData/")
     public void testGetAll() throws Exception {
@@ -59,6 +61,7 @@ public class ContactDaoTest {
         assertThat(contactList.size(), is(2));
     }
 
+    //findByIdメソッドのテスト
     @Test
     @DatabaseSetup(value = "/testData/")
     public void testFindById() throws Exception {
