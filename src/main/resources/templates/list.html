@@ -18,11 +18,11 @@
                 <th scope="col">日時</th>
             </tr>
             <tr th:each="contact:${contacts}" th:object="${contact}">
-                <td scope="row"><a th:text="*{id}" th:href="@{detail/{id}(id = *{id})}"></a></td>
-                <td th:text="*{name}"></td>
-                <td th:text="*{mail}"></td>
-                <td th:text="*{content}"></td>
-                <td th:text="*{created}"></td>
+                <td id="id" scope="row"><a th:text="*{id}" th:href="@{detail/{id}(id = *{id})}"></a></td>
+                <td id="name" th:text="*{name}"></td>
+                <td id="mail" th:text="*{mail}"></td>
+                <td id="content" th:text="*{content}"></td>
+                <td id="created" th:text="*{created}"></td>
             </tr>
         </table>
         <div class="text-center mt-5">
