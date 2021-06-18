@@ -1,14 +1,12 @@
 package com.example.practice.domein.service;
 
 import com.example.practice.PracticeApplication;
-import com.example.practice.domain.dao.ContactDaoImpl;
+import com.example.practice.domain.dao.ContactDao;
 import com.example.practice.domain.entity.Contact;
 import com.example.practice.domain.service.ContactServiceImpl;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
@@ -20,10 +18,10 @@ import static org.mockito.Mockito.*;
 
 
 @SpringBootTest(classes = PracticeApplication.class)
-public class ContactServiceTest {
+public class ContactServiceUnitTest {
 
     @Mock
-    ContactDaoImpl contactDao;
+    ContactDao contactDao;
 
     @InjectMocks
     ContactServiceImpl contactService;

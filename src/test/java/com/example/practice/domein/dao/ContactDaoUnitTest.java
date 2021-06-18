@@ -3,7 +3,7 @@ package com.example.practice.domein.dao;
 import com.example.practice.CsvDataSetLoader;
 import com.example.practice.PracticeApplication;
 import com.example.practice.TestConfiguration;
-import com.example.practice.domain.dao.ContactDaoImpl;
+import com.example.practice.domain.dao.ContactDao;
 import com.example.practice.domain.entity.Contact;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
@@ -32,14 +32,14 @@ import static org.hamcrest.CoreMatchers.is;
 })
 @SpringBootTest(classes = {PracticeApplication.class})
 @Import(TestConfiguration.class)
+@DatabaseSetup(value = "/testData/") //初期状態のDB
 @Transactional //メソッドの実行のたびにロールバックする
-public class ContactDaoTest {
+public class ContactDaoUnitTest {
 
     @Autowired
-    private ContactDaoImpl contactDao;
+    private ContactDao contactDao;
 
     @Test
-    @DatabaseSetup(value = "/testData/") //初期状態のDB
     @ExpectedDatabase(value = "/expectedData/", assertionMode = DatabaseAssertionMode.NON_STRICT) //期待されるDB
     //createメソッドのテスト
     public void testCreate() throws Exception {
@@ -54,7 +54,6 @@ public class ContactDaoTest {
 
     //getAllメソッドのテスト
     @Test
-    @DatabaseSetup(value = "/testData/")
     public void testGetAll() throws Exception {
         List<Contact> contactList = contactDao.getAll();
 
@@ -63,7 +62,6 @@ public class ContactDaoTest {
 
     //findByIdメソッドのテスト
     @Test
-    @DatabaseSetup(value = "/testData/")
     public void testFindById() throws Exception {
         Contact contact = contactDao.findById(1);
 
